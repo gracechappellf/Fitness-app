@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/Fitness-app/',
+  base: './',
   plugins: [
     react(),
     VitePWA({
@@ -17,8 +17,8 @@ export default defineConfig({
         background_color: '#faf9f7',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/Fitness-app/',
-        start_url: '/Fitness-app/',
+        scope: './',
+        start_url: './',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
