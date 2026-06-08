@@ -1,0 +1,22 @@
+{
+  "name": "grace-fit",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node generate-icons.js && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@tabler/icons-webfont": "^2.44.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.6",
+    "vite-plugin-pwa": "^0.20.5",
+    "workbox-window": "^7.1.0",
+    "sharp": "^0.33.5"
+  }
+}
