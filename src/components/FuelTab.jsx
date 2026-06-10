@@ -3,7 +3,8 @@ import { MEAL_PLANS } from '../data.js';
 import { advanceRotationIfNewWeek, dayKeyOf } from '../utils.js';
 import MealRecipeSheet from './MealRecipeSheet.jsx';
 
-const ROTATION_NAMES = { A: 'Week A', B: 'Week B · Fish', C: 'Week C · Plant' };
+const ROTATION_NAMES = { A: 'Week A · Balanced', B: 'Week B · Fish', C: 'Week C · Plant' };
+const MEAL_EMOJI = ['🌅', '🍎', '🥗', '☕', '🍽️', '🍫'];
 
 export default function FuelTab({ store, onToggleMealCheck, setMealRotation, onSetMealOverride, onClearMealOverride }) {
   const [recipeSheet, setRecipeSheet] = useState(null);
@@ -58,7 +59,7 @@ export default function FuelTab({ store, onToggleMealCheck, setMealRotation, onS
         return (
           <div key={i} className="meal-card" onClick={() => setRecipeSheet({ meal: activeMeal, mealKey, index: i })}>
             <div className="meal-row">
-              <div className="meal-time-badge">{activeMeal.time}</div>
+              <div className="meal-time-badge">{MEAL_EMOJI[i]} {activeMeal.time}</div>
               <div className="meal-info">
                 <div className="meal-name">{activeMeal.name}</div>
                 <div className="meal-desc">{activeMeal.desc}</div>

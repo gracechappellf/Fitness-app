@@ -35,19 +35,18 @@ export default function TrainTab({ store, onToggleDone, onSaveWorkoutLog }) {
     <div>
       {/* Hero */}
       <div className="hero-card">
-        <div className="hero-greeting">{greeting}, Grace</div>
-        <div className="hero-date">{new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}</div>
-        <div className="hero-workout">
-          {store.done[todayKey]
-            ? <span className="hero-done">{todaySched.label} · Crushed it ✓</span>
-            : todaySched.type === 'rest'
-              ? <span className="hero-rest">{todaySched.label} · Rest & recover</span>
-              : <span>{todaySched.label} · {todaySched.time}</span>
-          }
+        <div className="hero-top-row">
+          <div className="hero-greeting">{greeting}, Grace</div>
+          <div className="hero-streak">
+            <i className="ti ti-flame"></i>
+            <span>{streak}</span>
+          </div>
         </div>
-        <div className="hero-streak">
-          <i className="ti ti-flame"></i>
-          <span>{streak} day streak</span>
+        <div className="hero-workout-name">{todaySched.label}</div>
+        <div className="hero-bottom-row">
+          <span className={`badge ${BADGE_CLASS[todaySched.type]}`}>{todaySched.type}</span>
+          <span className="hero-time">⏰ {todaySched.time}</span>
+          {store.done[todayKey] && <span className="hero-done-badge">✓ Done</span>}
         </div>
       </div>
 
