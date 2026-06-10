@@ -1,104 +1,110 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useStore } from './useStore.js';
-import { TOD_DOW, dayKeyOf, offsetOfDow } from './utils.js';
 import Header from './components/Header.jsx';
-import WeekTab from './components/WeekTab.jsx';
-import TodayTab from './components/TodayTab.jsx';
-import MealsTab from './components/MealsTab.jsx';
-import GroceryTab from './components/GroceryTab.jsx';
-import GutTab from './components/GutTab.jsx';
-import Modal from './components/Modal.jsx';
+import TrainTab from './components/TrainTab.jsx';
+import FuelTab from './components/FuelTab.jsx';
+import ShopTab from './components/ShopTab.jsx';
+import DiaryTab from './components/DiaryTab.jsx';
+import MeTab from './components/MeTab.jsx';
 
-const TABS = ['week', 'today', 'meals', 'grocery', 'gut'];
 const NAV = [
-  { id: 'week', icon: 'ti-calendar-week', label: 'Week' },
-  { id: 'today', icon: 'ti-lightning-bolt', label: 'Today' },
-  { id: 'meals', icon: 'ti-bowl', label: 'Meals' },
-  { id: 'grocery', icon: 'ti-shopping-cart', label: 'Grocery' },
-  { id: 'gut', icon: 'ti-leaf', label: 'Gut' },
+  { id: 'train', icon: 'ti-barbell',       label: 'Train' },
+  { id: 'fuel',  icon: 'ti-bowl',          label: 'Fuel' },
+  { id: 'shop',  icon: 'ti-shopping-cart', label: 'Shop' },
+  { id: 'diary', icon: 'ti-notebook',      label: 'Diary' },
+  { id: 'me',    icon: 'ti-user',          label: 'Me' },
 ];
 
 export default function App() {
-  const { store, toggleDone, toggleMealCheck, toggleMealExp, toggleGrocery, resetGrocery, toggleGut } = useStore();
-  const [activeTab, setActiveTab] = useState('week');
-  const [viewDow, setViewDow] = useState(TOD_DOW);
-  const [viewKey, setViewKey] = useState(() => dayKeyOf(offsetOfDow(TOD_DOW)));
-  const [modalOpen, setModalOpen] = useState(false);
-  const scrollRef = useRef(null);
+  const {
+    store,
+    toggleDone,
+    toggleMealCheck,
+    toggleGrocery,
+    resetGrocery,
+    toggleGut,
+    saveWorkoutLog,
+    addWeightEntry,
+    setMealRotation,
+    setMealOverride,
+    clearMealOverride,
+    setPantryItem,
+    removePantryItem,
+    saveDiaryEntry,
+    setAiKey,
+    setAiModel,
+    cacheInsight,
+    clearV2Backup,
+  } = useStore();
+
+  const [activeTab, setActiveTab] = useState('train');
+  const [scrollRefs] = useState({});
 
   function showTab(id) {
     setActiveTab(id);
-    if (scrollRef.current) scrollRef.current.scrollTop = 0;
-  }
-
-  function jumpToDay(dow, key) {
-    setViewDow(dow);
-    setViewKey(key);
-    showTab('today');
-  }
-
-  function handleLogActivity() {
-    const key = dayKeyOf(offsetOfDow(TOD_DOW));
-    toggleDone(key);
-    // Ensure it's set to true even if it was already true
-    setModalOpen(false);
   }
 
   return (
     <div className="app">
-      <Header store={store} />
+      <Header store={store} activeTab={activeTab} />
 
-      <div className="scroll" ref={scrollRef}>
-        <div className={`section ${activeTab === 'week' ? 'active' : ''}`}>
-          <WeekTab
+      <div className="scroll">
+        <div className={`section ${activeTab === 'train' ? 'active' : ''}`}>
+          <TrainTab
             store={store}
-            onJumpToDay={jumpToDay}
-            onOpenModal={() => setModalOpen(true)}
-            onQuickDone={toggleDone}
-          />
-        </div>
-        <div className={`section ${activeTab === 'today' ? 'active' : ''}`}>
-          <TodayTab
-            store={store}
-            viewDow={viewDow}
-            viewKey={viewKey}
-            onToggleEx={toggleDone}
             onToggleDone={toggleDone}
+            onSaveWorkoutLog={saveWorkoutLog}
           />
         </div>
-        <div className={`section ${activeTab === 'meals' ? 'active' : ''}`}>
-          <MealsTab
+        <div className={`section ${activeTab === 'fuel' ? 'active' : ''}`}>
+          <FuelTab
             store={store}
             onToggleMealCheck={toggleMealCheck}
-            onToggleMealExp={toggleMealExp}
+            setMealRotation={setMealRotation}
+            onSetMealOverride={setMealOverride}
+            onClearMealOverride={clearMealOverride}
           />
         </div>
-        <div className={`section ${activeTab === 'grocery' ? 'active' : ''}`}>
-          <GroceryTab
+        <div className={`section ${activeTab === 'shop' ? 'active' : ''}`}>
+          <ShopTab
             store={store}
             onToggleGrocery={toggleGrocery}
             onResetGrocery={resetGrocery}
+            onSetPantryItem={setPantryItem}
+            onRemovePantryItem={removePantryItem}
           />
         </div>
-        <div className={`section ${activeTab === 'gut' ? 'active' : ''}`}>
-          <GutTab store={store} onToggleGut={toggleGut} />
+        <div className={`section ${activeTab === 'diary' ? 'active' : ''}`}>
+          <DiaryTab
+            store={store}
+            onSaveDiaryEntry={saveDiaryEntry}
+            onToggleGut={toggleGut}
+            onCacheInsight={cacheInsight}
+          />
+        </div>
+        <div className={`section ${activeTab === 'me' ? 'active' : ''}`}>
+          <MeTab
+            store={store}
+            onAddWeightEntry={addWeightEntry}
+            onSetAiKey={setAiKey}
+            onSetAiModel={setAiModel}
+            onClearV2Backup={clearV2Backup}
+          />
         </div>
       </div>
 
       <nav className="bottom-nav">
         {NAV.map(n => (
-          <button key={n.id} className={`nav-btn ${activeTab === n.id ? 'active' : ''}`} onClick={() => showTab(n.id)}>
+          <button
+            key={n.id}
+            className={`nav-btn ${activeTab === n.id ? 'active' : ''}`}
+            onClick={() => showTab(n.id)}
+          >
             <i className={`ti ${n.icon}`}></i>
             <span>{n.label}</span>
           </button>
         ))}
       </nav>
-
-      <Modal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onLog={handleLogActivity}
-      />
     </div>
   );
 }

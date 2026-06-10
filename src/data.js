@@ -151,3 +151,104 @@ export const GUT = [
   { icon: 'ti-moon', title: 'Hormones and cycle bloating', body: 'Bloating is often worst 1–2 weeks before your period (luteal phase) due to progesterone. This is normal and not fat. Reduce salt slightly, increase potassium (banana, avocado), prioritise sleep, and go easier on intense training during these days. It will resolve. Not a failure of your diet.' },
   { icon: 'ti-flame', title: 'Gut inflammation and abs', body: 'Chronically inflamed gut = abs always hidden. Key triggers: ultra-processed food, excess alcohol, excess sugar, seed oils (sunflower, vegetable — swap for olive oil). Anti-inflammatory foods that genuinely help: oily fish, turmeric, ginger, dark leafy greens, berries, and green tea.' },
 ];
+
+// ── Meal plan rotations ──────────────────────────────────────────────────────
+
+const MEALS_B = [
+  {
+    time: '7am', name: 'Breakfast', desc: 'Smoked salmon scrambled eggs',
+    kcal: 400, p: 32, c: 8, f: 18,
+    prep: 'SCRAMBLED EGGS WITH SMOKED SALMON:\n3 eggs scrambled low and slow in butter. Top with 80g smoked salmon + capers + squeeze of lemon. Serve with 1 slice sourdough.\n\nMEAL-PREP: Make egg muffins with smoked salmon & dill — 8 eggs + smoked salmon + dill + cream cheese. Whisk, pour into muffin tin, 180°C for 20 min. Makes 12, keeps 5 days.',
+  },
+  {
+    time: '11am', name: 'Mid-morning snack', desc: 'Rice cakes + cottage cheese + cucumber',
+    kcal: 160, p: 14, c: 20, f: 3,
+    prep: '2–3 rice cakes + 100g cottage cheese + sliced cucumber + pinch of salt and pepper. Keeps well in a small container for desk snacking.',
+  },
+  {
+    time: '1pm', name: 'Lunch', desc: 'Prawn + avocado rice bowl',
+    kcal: 490, p: 38, c: 46, f: 15,
+    prep: 'PRAWN BOWLS (4 portions — prep Sunday):\nCook 400g king prawns (3 min each side in garlic + olive oil). Cook 300g jasmine rice. Slice 2 avocados + cucumber + edamame. Pack bowls. Dress with soy sauce + sesame oil + lime. Add fresh coriander on day.',
+  },
+  {
+    time: '4pm', name: 'Afternoon snack', desc: 'Greek yoghurt + berries + granola',
+    kcal: 220, p: 18, c: 24, f: 6,
+    prep: 'Pre-portion into small jars on Sunday. Keep granola separate in a small zip bag so it stays crunchy. Grab and go.',
+  },
+  {
+    time: '7pm', name: 'Dinner', desc: 'Fish rotation (15 min cook)',
+    kcal: 540, p: 44, c: 36, f: 18,
+    prep: 'WEEKLY FISH ROTATION:\nMon: Sea bass + roasted asparagus + lemon butter sauce\nTue: Prawn stir-fry + rice noodles + ginger/soy\nWed: Baked salmon + quinoa + steamed greens\nThu: Tuna steak + sweet potato wedges + tenderstem\nFri: Go out — enjoy it\nSat: Smoked haddock + poached egg + wilted spinach\nSun: King prawn pasta + homemade tomato sauce + basil',
+  },
+  {
+    time: 'Eve', name: 'Sweet fix', desc: 'Dark choc + peppermint tea OR date balls',
+    kcal: 120, p: 2, c: 14, f: 6,
+    prep: 'DATE BALLS (makes 15 — prep Sunday):\n10 Medjool dates + 3 tbsp peanut butter + 2 tbsp cocoa powder. Blend, roll, coat in desiccated coconut. Keep in fridge all week.',
+  },
+];
+
+const MEALS_C = [
+  {
+    time: '7am', name: 'Breakfast', desc: 'Chia pudding + mango + toasted seeds',
+    kcal: 380, p: 16, c: 52, f: 14,
+    prep: 'CHIA PUDDING (makes 5 jars — prep Sunday):\n3 tbsp chia seeds + 200ml oat milk + 100g coconut yoghurt. Stir well, refrigerate overnight. Top with fresh or frozen mango + 1 tbsp pumpkin seeds + drizzle of honey.',
+  },
+  {
+    time: '11am', name: 'Mid-morning snack', desc: 'Apple + almond butter OR hummus + veg sticks',
+    kcal: 170, p: 6, c: 22, f: 7,
+    prep: 'Prep veg sticks (carrot, celery, cucumber) on Sunday with a small pot of hummus. Or the classic apple + almond butter — keep a jar at your desk.',
+  },
+  {
+    time: '1pm', name: 'Lunch', desc: 'Chickpea + roasted veg grain bowl',
+    kcal: 500, p: 24, c: 62, f: 14,
+    prep: 'CHICKPEA BOWLS (4 portions — prep Sunday):\nRoast 2 tins drained chickpeas at 200°C for 25 min with paprika + cumin + olive oil (crispy!). Cook 300g quinoa. Roast peppers + courgette + red onion. Pack bowls. Dress with tahini + lemon + garlic. Add spinach fresh each day.',
+  },
+  {
+    time: '4pm', name: 'Afternoon snack', desc: 'Edamame + sea salt OR coconut yoghurt + nuts',
+    kcal: 190, p: 14, c: 18, f: 7,
+    prep: 'Frozen edamame: microwave 3 min from frozen, sprinkle sea salt, eat in pod. High protein, zero effort. Or 150g coconut yoghurt + a handful of mixed nuts.',
+  },
+  {
+    time: '7pm', name: 'Dinner', desc: 'Plant protein rotation (20 min cook)',
+    kcal: 520, p: 28, c: 56, f: 18,
+    prep: 'WEEKLY PLANT ROTATION:\nMon: Crispy tofu stir-fry + rice + broccoli + soy/sesame\nTue: Red lentil dahl + basmati + steamed kale\nWed: Chickpea curry + flatbread + cucumber raita\nThu: Black bean tacos + guacamole + shredded slaw\nFri: Go out — enjoy it\nSat: Pasta e fagioli (white bean + tomato + rosemary)\nSun: Big veggie tray bake from Sunday prep',
+  },
+  {
+    time: 'Eve', name: 'Sweet fix', desc: 'Medjool date + nut butter OR dark choc',
+    kcal: 110, p: 2, c: 13, f: 5,
+    prep: "2 Medjool dates stuffed with almond or peanut butter — nature's chocolate bar. Or 2 squares 85% dark choc with peppermint tea.",
+  },
+];
+
+export const MEAL_PLANS = {
+  A: MEALS,
+  B: MEALS_B,
+  C: MEALS_C,
+};
+
+// ── Grocery plan rotations ───────────────────────────────────────────────────
+
+export const GROCERY_PLANS = {
+  A: GROCERY,
+  B: [
+    { cat: 'Protein', icon: 'ti-meat', color: 'var(--tc)', items: ['King prawns (400g)', 'Salmon fillets (×4)', 'Sea bass fillets (×2)', 'Smoked salmon (150g)', 'Tuna steaks (×2)', 'Smoked haddock (×2)', 'Eggs (12)', 'Greek yoghurt full fat (×2)', 'Cottage cheese', 'Protein powder'] },
+    { cat: 'Carbs & Grains', icon: 'ti-bread', color: '#8B6F47', items: ['Jasmine rice (500g)', 'Quinoa (500g)', 'Rice noodles', 'Sourdough (1 loaf)', 'Sweet potatoes (4)', 'Rice cakes', 'Pasta (300g)', 'Edamame (frozen bag)', 'Granola (1 bag)'] },
+    { cat: 'Veg & Fruit', icon: 'ti-leaf', color: 'var(--green)', items: ['Asparagus (bunch)', 'Tenderstem broccoli', 'Spinach (big bag)', 'Mixed peppers (4)', 'Cherry tomatoes', 'Cucumber', 'Avocados (3)', 'Lemons (4)', 'Limes (2)', 'Berries (fresh + frozen)', 'Bananas (5)', 'Medjool dates', 'Fresh coriander'] },
+    { cat: 'Fats & Flavour', icon: 'ti-droplet', color: 'var(--blue)', items: ['Unsalted butter', 'Sesame oil', 'Soy sauce (low sodium)', 'Fresh ginger (root)', 'Garlic (bulb)', 'Capers', 'Extra virgin olive oil', 'Dark choc 85% (×2)', 'Peanut butter', 'Chia seeds'] },
+    { cat: 'Gut-Friendly', icon: 'ti-heart', color: '#9B59B6', items: ['Kefir (small bottle)', 'Miso paste', 'Peppermint tea', 'Fennel tea', 'Apple cider vinegar', 'Bone broth (carton)', 'Kimchi (jar)'] },
+  ],
+  C: [
+    { cat: 'Plant Protein', icon: 'ti-meat', color: 'var(--tc)', items: ['Firm tofu (×2 blocks)', 'Chickpeas (×3 tins)', 'Red lentils (500g)', 'Black beans (×2 tins)', 'White beans (×2 tins)', 'Edamame (frozen bag)', 'Greek yoghurt (×2)', 'Eggs (12)', 'Protein powder', 'Hemp seeds'] },
+    { cat: 'Carbs & Grains', icon: 'ti-bread', color: '#8B6F47', items: ['Quinoa (500g)', 'Basmati rice (500g)', 'Pasta (400g)', 'Flatbreads (pack)', 'Sweet potatoes (4)', 'Oats (1 bag)', 'Rice cakes', 'Granola (1 bag)', 'Chia seeds'] },
+    { cat: 'Veg & Fruit', icon: 'ti-leaf', color: 'var(--green)', items: ['Spinach (big bag)', 'Kale (bag)', 'Broccoli (2 heads)', 'Mixed peppers (6)', 'Courgettes (2)', 'Red onion (3)', 'Cherry tomatoes', 'Cucumber', 'Avocados (4)', 'Mango (fresh or frozen)', 'Lemons (3)', 'Limes (2)', 'Bananas (7)', 'Berries (frozen bag)', 'Medjool dates'] },
+    { cat: 'Fats & Flavour', icon: 'ti-droplet', color: 'var(--blue)', items: ['Tahini', 'Almond butter', 'Peanut butter', 'Extra virgin olive oil', 'Coconut milk (tin)', 'Soy sauce', 'Sesame oil', 'Dark choc 85% (×2)', 'Desiccated coconut', 'Cocoa powder'] },
+    { cat: 'Gut-Friendly', icon: 'ti-heart', color: '#9B59B6', items: ['Kimchi (jar)', 'Peppermint tea', 'Fennel tea', 'Fresh ginger (root)', 'Garlic (bulb)', 'Turmeric powder', 'Apple cider vinegar', 'Kefir (small bottle)'] },
+  ],
+};
+
+// ── Diary ────────────────────────────────────────────────────────────────────
+
+export const DIARY_SYMPTOM_TAGS = [
+  'Bloating', 'Gas', 'Cramping', 'Nausea', 'Tired', 'Brain fog',
+  'Headache', 'Skin flare', 'Good energy', 'Great mood', 'Constipation', 'Loose stools',
+];
