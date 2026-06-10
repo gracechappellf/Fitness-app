@@ -9,7 +9,7 @@ import MeTab from './components/MeTab.jsx';
 
 const NAV = [
   { id: 'train', icon: 'ti-barbell',       label: 'Train' },
-  { id: 'fuel',  icon: 'ti-bowl',          label: 'Fuel' },
+  { id: 'fuel',  icon: 'ti-bowl',          label: 'Meals' },
   { id: 'shop',  icon: 'ti-shopping-cart', label: 'Shop' },
   { id: 'diary', icon: 'ti-notebook',      label: 'Diary' },
   { id: 'me',    icon: 'ti-user',          label: 'Me' },
@@ -47,6 +47,8 @@ export default function App() {
   return (
     <div className="app">
       <Header store={store} activeTab={activeTab} />
+
+      <div className="stripe-bar"><span></span><span></span><span></span></div>
 
       <div className="scroll">
         <div className={`section ${activeTab === 'train' ? 'active' : ''}`}>

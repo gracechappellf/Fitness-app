@@ -1,8 +1,8 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
 
-const BASE = 'http://localhost:5178';
-const OUT = '/tmp/screenshots2';
+const BASE = 'http://localhost:5179';
+const OUT = '/tmp/screenshots3';
 fs.mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
@@ -11,29 +11,27 @@ const page = await ctx.newPage();
 
 await page.goto(BASE);
 await page.waitForSelector('.hero-card', { timeout: 15000 });
-await page.screenshot({ path: `${OUT}/01-train-hero.png` });
+await page.screenshot({ path: `${OUT}/01-train.png` });
 
-await page.evaluate(() => document.querySelector('.scroll').scrollTop = 420);
+await page.evaluate(() => document.querySelector('.scroll').scrollTop = 380);
 await page.waitForTimeout(300);
 await page.screenshot({ path: `${OUT}/02-train-exercises.png` });
 
-// Fuel tab
+// Meals tab
 await page.evaluate(() => document.querySelector('.scroll').scrollTop = 0);
 await page.locator('.nav-btn').nth(1).click();
-await page.waitForSelector('.fuel-header', { timeout: 5000 });
-await page.screenshot({ path: `${OUT}/03-fuel-top.png` });
+await page.waitForSelector('.day-nav', { timeout: 5000 });
+await page.screenshot({ path: `${OUT}/03-meals-top.png` });
 
-await page.evaluate(() => document.querySelector('.scroll').scrollTop = 260);
+await page.evaluate(() => document.querySelector('.scroll').scrollTop = 280);
 await page.waitForTimeout(300);
-await page.screenshot({ path: `${OUT}/04-fuel-meals.png` });
+await page.screenshot({ path: `${OUT}/04-meals-cards.png` });
 
-// Recipe sheet
+// Navigate to yesterday
 await page.evaluate(() => document.querySelector('.scroll').scrollTop = 0);
-await page.locator('.meal-card').first().click();
-await page.waitForSelector('.sheet-bg', { timeout: 5000 });
-await page.screenshot({ path: `${OUT}/05-recipe-sheet.png` });
-await page.locator('.sheet-bg').click({ position: { x: 195, y: 40 } });
-await page.waitForTimeout(300);
+await page.locator('.day-nav-btn').first().click();
+await page.waitForTimeout(400);
+await page.screenshot({ path: `${OUT}/05-meals-yesterday.png` });
 
 // Shop tab
 await page.locator('.nav-btn').nth(2).click();

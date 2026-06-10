@@ -17,7 +17,7 @@ export default function Header({ store, activeTab }) {
     <div className="header">
       <div className="header-row">
         <div>
-          <div className="header-title">Grace Fit</div>
+          <div className="header-title">Grace's Fitness Tracker</div>
           <div className="header-sub">
             {activeTab === 'train' ? greeting : TAB_TITLES[activeTab]}
             {activeTab === 'fuel' && rotation && (

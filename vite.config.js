@@ -10,11 +10,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png'],
       manifest: {
-        name: 'Grace Fit',
+        name: "Grace's Fitness Tracker",
         short_name: 'Grace Fit',
         description: 'Personal fitness & nutrition tracker',
         theme_color: '#C0714A',
-        background_color: '#faf9f7',
+        background_color: '#FAF7F2',
         display: 'standalone',
         orientation: 'portrait',
         scope: './',

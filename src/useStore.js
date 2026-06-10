@@ -36,9 +36,9 @@ export function useStore() {
     update(s => ({ ...s, done: { ...s.done, [key]: !s.done[key] } }));
   }
 
-  function toggleMealCheck(i, e) {
+  function toggleMealCheck(key, e) {
     if (e) e.stopPropagation();
-    update(s => ({ ...s, meals: { ...s.meals, [`c${i}`]: !s.meals[`c${i}`] } }));
+    update(s => ({ ...s, meals: { ...s.meals, [key]: !s.meals[key] } }));
   }
 
   function toggleMealExp(i) {
