@@ -28,11 +28,11 @@ export const SCHED = {
       ]},
       { name: 'Superset A — 3 rounds, 90s rest', items: [
         { n: 'Barbell Hip Thrust', d: '3 × 10–12 · 40–60 kg', c: 'Shoulders on bench, drive through heels. Squeeze glutes 1 sec at top. Not your back.' },
-        { n: 'Cable Kickback', d: '3 × 12/side · 5–10 kg', c: 'Hips square. Slow descent. Squeeze hard at top. Use the university cable station.' },
+        { n: 'Leg Press (glute focus)', d: '3 × 12 · feet high + wide on plate', c: 'Place feet near top of plate, shoulder-width apart. Deep press, slow descent. Glutes doing the work, not quads.' },
       ]},
       { name: 'Superset B — 3 rounds, 90s rest', items: [
         { n: 'Barbell Back Squat', d: '3 × 10 · 30–50 kg', c: 'Bar on upper traps, chest up, squat below parallel. Drive knees out.' },
-        { n: 'Lateral Band Walk', d: '3 × 20 steps/side · medium band', c: 'Half squat throughout. Outer glutes on fire = working. Short steps, controlled.' },
+        { n: 'DB Step-Up', d: '3 × 10/side · 8–14 kg/side', c: 'Step onto bench, squeeze glute of working leg at top. Control the step down. No pushing off back foot.' },
       ]},
       { name: 'Romanian Deadlift — 3 rounds', items: [
         { n: 'Romanian Deadlift (barbell)', d: '3 × 10 · 30–45 kg', c: 'Hinge at hips, soft knee bend, bar close to legs. Feel hamstrings stretch deeply.' },
